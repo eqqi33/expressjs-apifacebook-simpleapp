@@ -13,6 +13,9 @@ block content
                 option(value=option, selected) #{option}
               else
                 option(value=option) #{option}
+      div(class='col s4')
+        a(class='waves-effect waves-light btn red right',href='/logout') Logout
+          i(class='material-icons left')      
   if userFeeds.length > 0                
     div#image(class='row',style='margin: auto;width: 50%;padding-bottom:20px;')
       each feeds,i in userFeeds

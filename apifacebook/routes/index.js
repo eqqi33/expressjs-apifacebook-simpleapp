@@ -24,7 +24,6 @@ var getDataFeed = (req, parseDataUri, callbackData) => {
   }
   request(options).then(fbRes => {
       const parsedRes = JSON.parse(fbRes);
-      console.log('requesttt : ', parsedRes);
       callbackData(parsedRes);
   }).catch( errno => {
       callbackData(errno);
@@ -37,7 +36,6 @@ let parseDataUri = {pageFieldSet:pageFieldSet,limit:limit};
 /* GET index */
 router.get('/', function(req, res, next) {
   if(req.user){
-    console.log(parseDataUri);
     const use_data_feed = getDataFeed(req,parseDataUri, (feedBack)=>{
       if(typeof feedBack.data !== 'undefined'){
         let parserUrlPrev = typeof feedBack.paging.previous !== 'undefined' ? url.parse(feedBack.paging.previous, true).query : [];
