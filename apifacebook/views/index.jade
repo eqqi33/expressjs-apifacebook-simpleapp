@@ -1,5 +1,47 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
+  div#selectbar(class='row')
+      div(class='col s4')
+      div(class='input-field col s4')
+        center
+          label Show Item Per Page
+        select#itemPage
+            option(value='', disabled, selected) Choose Your Show Item
+            each option in [6,10,16]
+              if itemPerPage == option
+                option(value=option, selected) #{option}
+              else
+                option(value=option) #{option}
+  if userFeeds.length > 0                
+    div#image(class='row',style='margin: auto;width: 50%;padding-bottom:20px;')
+      each feeds,i in userFeeds
+        if i != 0 && i % 2 == 0
+          div(class='row ')
+          
+        div(class='col s6')
+          div(class='card')
+            div(class='card-image')
+              img(src=feeds.picture)
+              span(class='card-title') #{feeds.name}
+            div(class='card-content')
+              if feeds.description
+                p #{feeds.description.substr(0, 90)}...
+              else
+                p ...                
+            div(class='card-action')
+              if feeds.link
+                a(href=feeds.link, target='_blank')
+                  center Menuju Berita
+              else
+                p 
+                  center N/A
+        
+    div#paging(class='row')
+      center
+        a(href='page?prev=true&item='+urlPrev.limit+'&since='+urlPrev.since+'&__paging_token='+urlPrev.__paging_token+'&__previous='+urlPrev.__previous ,class='waves-effect waves-light btn', style='margin-right: 10px;') prev
+          i(class='material-icons left') chevron_left      
+        a(href='page?next=true&item='+urlNext.limit+'&until='+urlNext.until+'&__paging_token='+urlNext.__paging_token ,class='waves-effect waves-light btn') next
+          i(class='material-icons right') chevron_right
+  script(src='/javascripts/index.js')
+
