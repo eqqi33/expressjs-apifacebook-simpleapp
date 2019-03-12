@@ -9,7 +9,7 @@ var logger = require('morgan');
 var session = require('express-session');
 
 var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/login');
+var loginRouter = require('./routes/login');
 
 // Configure the Facebook strategy for use by Passport.
 //
@@ -21,7 +21,7 @@ var usersRouter = require('./routes/login');
 passport.use(new Strategy({
   clientID: process.env['FACEBOOK_CLIENT_ID'],
   clientSecret: process.env['FACEBOOK_CLIENT_SECRET'],
-  callbackURL: '/auth/facebook/callback'
+  callbackURL: '/login/facebook/auth/callback'
 },
 function(accessToken, refreshToken, profile, cb) {
   // In this example, the user's Facebook profile is supplied as the user
@@ -72,13 +72,7 @@ app.use(passport.session());
 
 app.use('/', indexRouter);
 app.use('/page', indexRouter);
-app.get('/login', function(req, res){
-  res.render('login');
-});
-
-app.get('/login/facebook', passport.authenticate('facebook'));
-
-app.get('/auth/facebook/callback', passport.authenticate('facebook', { successRedirect: '/', failureRedirect: '/login' }));
+app.use('/login', loginRouter);
 
 app.get('/logout', function(req, res){
   req.logout();

@@ -4,7 +4,9 @@
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
-    "test": "jest"
+    "test": "jest",
+    "watch": "jest --watch",
+    "coverage": "jest --coverage"
   },
   "dependencies": {
     "connect-ensure-login": "^0.1.1",
@@ -21,7 +23,12 @@
     "request-promise": "^4.2.4"
   },
   "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.3",
+    "babel-jest": "^24.3.1",
+    "babel-preset-env": "^1.7.0",
     "jest": "^24.3.1",
+    "superagent": "^4.1.0",
     "supertest": "^4.0.0"
   }
 }
