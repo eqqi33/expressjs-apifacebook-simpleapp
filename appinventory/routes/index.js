@@ -1,14 +1,14 @@
 const express = require('express');
 const router = express.Router();
 const pgp = require('pg-promise')(/*options*/);
-const cn = 'postgres://postgres:admin123@127.0.0.1:5432/test_fd';
+const cn = 'postgres://postgres:admin123@127.0.0.1:5432/expressjs_testing';
 const db = pgp(cn);
 
 let getPivotArray = (dataArray, mainIndex, rowIndex, colIndex, dataIndex) => {
   let result = {}, ret = [];
   let newCols = [];
   for (let i = 0; i < dataArray.length; i++) {
-      if (!result[dataArray[i][rowIndex]]) {
+      if (!result[dataArray[i][mainIndex]]) {
         result[dataArray[i][mainIndex]] = {};
       }
       if(typeof rowIndex === "object"){
@@ -29,8 +29,8 @@ let getPivotArray = (dataArray, mainIndex, rowIndex, colIndex, dataIndex) => {
   let item = [];
   //Add Header Row
   item.push(mainIndex);
-  item.push.apply(item[0], rowIndex);
   if(typeof rowIndex === "object"){
+    item.push.apply(item[0], rowIndex);
     item.push.apply(item[0], newCols);
     ret.push(item[0]);
   }else{

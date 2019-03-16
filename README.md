@@ -1,4 +1,3 @@
-# expressjs-apifacebook-simpleapp
 ## Instruksi instalasi dan menjalankan aplikasi
 
 Dalam projek ini terdapat 2 aplikasi dengan nama folder :
@@ -29,21 +28,43 @@ setelah masuk ke dalam folder aplikasi, jalankan perintah
 
     npm install
 
-setelah itu jalan kan perintah
+setelah itu jalan kan perintah "DEBUG=[**folder projek**]:* npm run" **start** , contoh:
 
     DEBUG=apifacebook:* npm run start
 
-maka program akan berjalan sesuai dengan portnya dan coba akses url http://localhost:[port] dibrowser, contoh:
+noted
+maka program akan berjalan sesuai dengan portnya dan coba akses url "http://localhost:[**port**]" dibrowser, contoh:
 
     http://localhost:3000
  
  **Note :**
 	 
 
- - untuk aplikasi apifacebook menggunakan port 3000 saat akses pada browser
- - untuk aplikasi apifacebook user harus login facebook dengan akun yang tercantum pada tes soal karena aplikasi memakai developer facebook versi development
- - untuk aplikasi appinventory menggunakan port 4000 saat akses browser
+ - untuk aplikasi **apifacebook** menggunakan port **3000** saat akses pada browser
+ - untuk aplikasi **apifacebook** user harus login facebook dengan akun yang tercantum pada tes soal karena aplikasi memakai developer facebook versi development
+ - untuk aplikasi **appinventory** menggunakan port **4000** saat akses browser
+ - untuk aplikasi **appinventory** silahkan import file sql nya terlebih dahulu
+ - untuk konfigurasi database aplikasi **appinventory**, bisa di ubah di file routes/index.js pada variabel cn, contoh:
+
+> const  cn  =  'postgres://postgres:admin123@127.0.0.1:5432/expressjs_testing';
 
  
 
- 
+## Testing Aplikasi
+
+Untuk menjalankan testing pada aplikasi, jalankan pada root folder aplikasi, lalu jalankan perintah "DEBUG=[**folder projek**]:* npm run **test**", contoh:
+
+    DEBUG=apifacebook:* npm run test
+
+untuk melihat test coverage aplikasi, jalan kan perintah "DEBUG=[**folder projek**]:* npm run **coverage**", contoh:
+
+    DEBUG=apifacebook:* npm run coverage
+
+maka hasil dari coverage bisa dilihat dalam bentuk file html yang tergenerate didalam folder coverage/ dan file yang diakses berada di Icov-report/index.html
+
+## Routing Aplikasi
+ -	apifacebook
+	 -	/ => root aplikasi
+	 -	/login => masuk halaman login
+ -	appinventory
+	 -	/ => root aplikasi
