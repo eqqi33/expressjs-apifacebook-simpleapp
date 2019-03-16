@@ -28,11 +28,14 @@ setelah masuk ke dalam folder aplikasi, jalankan perintah
 
     npm install
 
-setelah itu jalan kan perintah "DEBUG=[**folder projek**]:* npm run" **start** , contoh:
-
+setelah itu jalan kan perintah "DEBUG=[**folder projek**]:* npm run" **start** untuk macOS dan Linux, dan "set DEBUG=[**folder projek**]:* & npm start" untuk pengguna windows, contoh:
+	
+	On Mac & Linux
     DEBUG=apifacebook:* npm run start
 
-noted
+	On Windows
+    set DEBUG=apifacebook:* & npm run star
+
 maka program akan berjalan sesuai dengan portnya dan coba akses url "http://localhost:[**port**]" dibrowser, contoh:
 
     http://localhost:3000
@@ -40,6 +43,7 @@ maka program akan berjalan sesuai dengan portnya dan coba akses url "http://loca
  **Note :**
 	 
 
+ - untuk setiap folder aplikasi, wajib menjalankan **npm install**, karena setiap project memiliki kebutuhan depedency yang berbeda
  - untuk aplikasi **apifacebook** menggunakan port **3000** saat akses pada browser
  - untuk aplikasi **apifacebook** user harus login facebook dengan akun yang tercantum pada tes soal karena aplikasi memakai developer facebook versi development
  - untuk aplikasi **appinventory** menggunakan port **4000** saat akses browser
