@@ -1,0 +1,30 @@
+extends layout
+
+block content
+  div(class='row')
+    div(class='col s12')
+      table#idnormal(class="responsive-table")
+        thead
+          tr
+            td ID
+            td Full Name
+            td Email
+            td Item
+            td Quantity
+            td Total Price
+        tbody
+        each val, index in dataAwal
+          tr
+            td #{index+1}
+            td #{val.firstname} #{val.lastname}
+            td #{val.email}
+            td #{val.item}
+            td #{val.quantity}
+            td #{val.totalprice}
+  div(class='row')
+    div(class='col s12')
+      table#idpivot(class="responsive-table",style='display:none;') !{dataPivot}
+
+  div(class='row')
+    div(class='col s12')
+      a#pivotBtn(class="waves-effect waves-light btn") To Pivot Table
