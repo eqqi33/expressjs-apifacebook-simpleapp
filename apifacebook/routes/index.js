@@ -1,10 +1,10 @@
-var express = require('express');
-var router = express.Router();
-var request = require('request-promise');
-var url = require('url');
+const express = require('express');
+const router = express.Router();
+const request = require('request-promise');
+const url = require('url');
 
 /* get user feed */
-var getDataFeed = (req, parseDataUri, callbackData) => {
+let getDataFeed = (req, parseDataUri, callbackData) => {
   let options = {
     method: 'GET',
     uri: `https://graph.facebook.com/${req.user.id}/feed`,
